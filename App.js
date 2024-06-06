@@ -1,5 +1,9 @@
+import 'react-native-gesture-handler';
 import { useFonts } from 'expo-font'
-import { Header } from "react-native/Libraries/NewAppScreen";
+import Header from './src/components/Header'
+import {SafeAreaProvider} from "react-native-safe-area-context";
+import {View} from "react-native";
+import Post from "./src/components/Post";
 
 export default function App() {
 
@@ -11,8 +15,13 @@ export default function App() {
         return null
     }else{
         return (
-            <Header />
-        );
+            <SafeAreaProvider>
+                <View style={{ flex: 1 }}>
+                    <Header />
+                    <Post image={require('./assets/imgs/fence.jpg')} />
+                </View>
+            </SafeAreaProvider>
+        )
     }
 }
 

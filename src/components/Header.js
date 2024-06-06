@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import {
     View,
     StyleSheet,
@@ -6,30 +6,40 @@ import {
     Text,
     Platform
 } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-export default class Header extends Component{
-    render() {
-        return (
-            <View style={styles.container}>
-                <View style={styles.rowContainer}>
-                    <Image source={require('../../assets/icon.png')} style={styles.image} />
-                    <Text style={styles.title}>Clone Insta</Text>
-                </View>
-            </View>
-        )
-    }
+export default function Header(){
+
+  const insets = useSafeAreaInsets()
+
+  return (
+    <View
+      style={[
+        styles.container,
+        {
+          paddingTop: insets.top,
+          paddingBottom: insets.bottom
+        }
+      ]}
+    >
+      <View style={styles.rowContainer}>
+        <Image source={require('../../assets/imgs/icon.png')} style={styles.image} />
+        <Text style={styles.title}>Clone Insta</Text>
+      </View>
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
     container: {
         marginTop: Platform.OS === 'ios' ? 20: 0,
-        padding: 10,
         borderBottomWidth: 1,
         borderColor: '#BBB'
     },
     rowContainer: {
         flexDirection: "row",
-        alignItems: 'center'
+        alignItems: 'center',
+        padding: 10
     },
     image: {
         height: 30,
