@@ -11,6 +11,17 @@ export default function App() {
         'shelter': require("./assets/fonts/shelter.otf")
     })
 
+    const comments = [
+      {
+        nickname: 'Joana Silva',
+        comment: 'Excelente Foto'
+      },
+      {
+        nickname: 'Rafael Pereira',
+        comment: 'muito ruim'
+      }
+    ]
+
     if(!fontsLoaded){
         return null
     }else{
@@ -18,7 +29,10 @@ export default function App() {
             <SafeAreaProvider>
                 <View style={{ flex: 1 }}>
                     <Header />
-                    <Post image={require('./assets/imgs/fence.jpg')} />
+                    <Post
+                      image={require('./assets/imgs/fence.jpg')}
+                      comments={comments}
+                    />
                 </View>
             </SafeAreaProvider>
         )
